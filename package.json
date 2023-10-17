@@ -1,6 +1,6 @@
 {
   "name": "@ekarpovs/simple-error-handler",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "A base npm package for use in my Node.js projects.",
   "exports": {
     ".": {
@@ -27,9 +27,10 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test": "jest --detectOpenHandles --coverage --verbose",
-    "rename": "./node_modules/move-file-cli/cli.js README.md gitREADME.md",
     "prepack": "npm run build",
-    "pack:local": "npm run rename&& npm run build && npm pack",
+    "rename": "./node_modules/move-file-cli/cli.js README.md gitREADME.md",
+    "rename:back": "./node_modules/move-file-cli/cli.js gitREADME.md README.md",
+    "pack:local": "npm run rename&& npm run build && npm pack && npm run rename:back",
     "prepare": "husky install",
     "semantic-release": "semantic-release --branches main",
     "commit": "git-cz"
@@ -67,7 +68,6 @@
     "@babel/preset-typescript": "^7.22.5",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.4",
-    "@types/nodemailer": "^6.4.9",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "cz-conventional-changelog": "^3.3.0",
